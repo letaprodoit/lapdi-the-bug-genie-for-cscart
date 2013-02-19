@@ -14,6 +14,9 @@ http://lab.thesoftwarepeople.com/tracker/wiki/cscart-tbg-MainPage
 - Unzip the zip file
 - Open addons/ folder and copy the tsp_the_bug_genie_for_cscart to [your cscart install dir]/addons/
 - Open the basic/ folder and copy admin/ and customer/ folder to all the necessary skins INCLUDING basic
+- BUG FIX: Open the core/ folder and copy fn.database.php [your cscart install dir]/core/ 
+-- (BUG FIX for Version 3.0.5 CS-CART see Issue #3766
+-- http://forum.cs-cart.com/tracker/issue-3766-bug-when-caching-tables-with-the-same-name-in-multiple-databases/
 - Open CS-Cart Administration Control Panel
 - Navigate to Settings-> Addons
 - Find the "The Software People: The Bug Genie for CS-Cart" addon and click "Install"

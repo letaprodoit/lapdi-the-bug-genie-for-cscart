@@ -15,7 +15,7 @@
 
 class TSPExternalDatabaseConnect
 {
-	const CONNECTION_NAME = "the_bug_genie_for_cscart";
+	const ALIAS = "the_bug_genie_for_cscart";
 
 	/***********
 	 *
@@ -29,7 +29,7 @@ class TSPExternalDatabaseConnect
 			$data['db_user'],
 			$data['db_password'],
 			$data['db_name'],
-			TSPExternalDatabaseConnect::CONNECTION_NAME,
+			self::getDatabaseAlias(),
 			$data['table_prefix']
 		);
 
@@ -41,10 +41,10 @@ class TSPExternalDatabaseConnect
 	 * Get database connction name
 	 *
 	 ***********/
-	public static function getDatabaseConnectionName($data)
+	public static function getDatabaseAlias()
 	{
-		return TSPExternalDatabaseConnect::CONNECTION_NAME;
-	}//end connectToExternalDB
+		return TSPExternalDatabaseConnect::ALIAS;
+	}//end getDatabaseConnectionName
 
 	/***********
 	 *
@@ -53,7 +53,7 @@ class TSPExternalDatabaseConnect
 	 ***********/
 	public static function connectToExternalDB($data)
 	{
-		return db_connect_to(TSPExternalDatabaseConnect::CONNECTION_NAME, $data['db_name']);
+		return db_connect_to(self::getDatabaseAlias(), $data['db_name']);
 	}//end connectToExternalDB
 
 	/***********

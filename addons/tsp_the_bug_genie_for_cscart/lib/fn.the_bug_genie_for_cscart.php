@@ -213,8 +213,9 @@ function fn_tsptbg_get_bug_genie_projects()
 	
 	if (fn_tsptbg_open_connection())
 	{
+		$db_conn = TSPExternalDatabaseConnect::getDatabaseAlias();
 		$scope = Registry::get('addons.tsp_the_bug_genie_for_cscart.scope');
-		$data_hash = db_get_hash_array("SELECT `id`,`name` FROM ?:projects WHERE `scope` = ?i AND `deleted` = 0 AND `locked` = 0 AND `archived` = 0",'id',$scope);
+		$data_hash = db_get_hash_array("$db_conn#SELECT `id`,`name` FROM ?:projects WHERE `scope` = ?i AND `deleted` = 0 AND `locked` = 0 AND `archived` = 0",'id',$scope);
 		
 		foreach ($data_hash as $k => $v)
 		{
@@ -240,8 +241,9 @@ function fn_tsptbg_get_bug_genie_issue_types()
 		
 	if (fn_tsptbg_open_connection())
 	{
+		$db_conn = TSPExternalDatabaseConnect::getDatabaseAlias();
 		$scope = Registry::get('addons.tsp_the_bug_genie_for_cscart.scope');
-		$data_hash = db_get_hash_array("SELECT `id`,`name` FROM ?:issuetypes WHERE `scope` = ?i", 'id', $scope);
+		$data_hash = db_get_hash_array("$db_conn#SELECT `id`,`name` FROM ?:issuetypes WHERE `scope` = ?i", 'id', $scope);
 		
 		foreach ($data_hash as $k => $v)
 		{
@@ -331,18 +333,19 @@ function fn_tsptbg_transfer_issue($order_id, $user_id = null)
 				// Prepare to connect to The Bug Genie database
 				if (fn_tsptbg_open_connection())
 				{
+					$db_conn = TSPExternalDatabaseConnect::getDatabaseAlias();
 					$user_id = 1; //default id is admin
 					
 					// If we are adding the user into the database
 					if (Registry::get('addons.tsp_the_bug_genie_for_cscart.add_user') == 'Y')
 					{
-						$user_exists = db_get_field("SELECT `id` FROM ?:users WHERE `email` = ?s", $user_info['email']);
+						$user_exists = db_get_field("$db_conn#SELECT `id` FROM ?:users WHERE `email` = ?s", $user_info['email']);
 						
 						// if the user doesn't exist add them
 						if (empty($user_exists))
 						{
 						
-							$salt = db_get_field("SELECT `value` FROM ?:settings WHERE `name` = 'salt' AND `module` = 'core'");
+							$salt = db_get_field("$db_conn#SELECT `value` FROM ?:settings WHERE `name` = 'salt' AND `module` = 'core'");
 							$raw_password = fn_generate_password(8);
 							$salted_password = crypt($raw_password, '$2a$07$'.$salt.'$');
 							
@@ -365,7 +368,7 @@ function fn_tsptbg_transfer_issue($order_id, $user_id = null)
 								'deleted' => 0,
 							);
 
-							$user_id = db_query("INSERT INTO ?:users ?e", $user_data);
+							$user_id = db_query("$db_conn#INSERT INTO ?:users ?e", $user_data);
 							
 							// if the user was added update the user scope
 							if (!empty($user_id))
@@ -376,7 +379,7 @@ function fn_tsptbg_transfer_issue($order_id, $user_id = null)
 									'group_id' => Registry::get('addons.tsp_the_bug_genie_for_cscart.user_group'),
 									'scope' => $scope
 								);
-								db_query("INSERT INTO ?:userscopes ?e", $user_scope);
+								db_query("$db_conn#INSERT INTO ?:userscopes ?e", $user_scope);
 							}//endif
 
 						}//endif							
@@ -389,7 +392,7 @@ function fn_tsptbg_transfer_issue($order_id, $user_id = null)
 						// Issue numbers are incremented based on the project they are in, issues have an ID number that is auto-generated
 						// and then there is an issue number that is incremented based on the project its associated with
 						// the issue number will need to be incremented
-						$previous_issue_no = db_get_field("SELECT MAX(issue_no) FROM ?:issues WHERE `project_id` = ?i", $issue_data['project_id']);
+						$previous_issue_no = db_get_field("$db_conn#SELECT MAX(issue_no) FROM ?:issues WHERE `project_id` = ?i", $issue_data['project_id']);
 						
 						$issue_data['issue_no'] = intval($previous_issue_no) + 1;
 						$issue_data['posted_by'] = $user_id;
@@ -402,7 +405,7 @@ function fn_tsptbg_transfer_issue($order_id, $user_id = null)
 						$issue_data['user_pain'] = 0;
 						$issue_data['reproduction_steps'] = "";
 						
-						$issue_id = db_query("INSERT INTO ?:issues ?e", $issue_data);
+						$issue_id = db_query("$db_conn#INSERT INTO ?:issues ?e", $issue_data);
 					}//endif
 					
 				}//endif
@@ -453,7 +456,7 @@ function fn_tsptbg_open_connection()
 	$connected = true;
 	$db_test_passed = true;
 	$table_test_passed = true;
-	$initialized = Registry::get('runtime.dbs.' . TSPExternalDatabaseConnect::getDatabaseConnectionName());
+	$initialized = Registry::get('runtime.dbs.' . TSPExternalDatabaseConnect::getDatabaseAlias());
 	
 	$db_data = Registry::get('addons.tsp_the_bug_genie_for_cscart');
 
