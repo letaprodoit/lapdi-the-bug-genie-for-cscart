@@ -4,7 +4,7 @@
 	<name>The Software People: The Bug Genie for CS-Cart</name>
 	<description>The Bug Genie for CS-Cart is an addon integration with The Bug Genie project management and issue tracking software.</description>
 	<version>1.0</version>
-	<priority>4294967294</priority>
+	<priority>1111000101</priority>
 	<position>0</position>
 	<status>active</status>
 	<default_language>EN</default_language>
