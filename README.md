@@ -13,7 +13,8 @@ For up-to-date installation and setup notes, visit the FAQ:
 - Download from repository
 - Unzip the zip file
 - Open addons/ folder and copy the tsp_the_bug_genie_for_cscart to [your cscart install dir]/addons/
-- Open the basic/ folder and copy admin/ and customer/ folder to all the necessary skins INCLUDING basic
+* Open the basic/admin/addons/ folder and copy the tsp_the_bug_genie_for_cscart/ folder to [your cscart install dir]/var/skins_repository/basic/admin/addons/ folder
+* Open the basic/customer/addons/ folder and copy the tsp_the_bug_genie_for_cscart/ folder to [your cscart install dir]/var/skins_repository/basic/customer/addons/ folder
 - BUG FIX: Open the core/ folder and copy fn.database.php [your cscart install dir]/core/ 
 -- [http://forum.cs-cart.com/tracker/issue-3766-bug-when-caching-tables-with-the-same-name-in-multiple-databases/](BUG FIX for Version 3.0.5 CS-CART Issue #3766)
 - Open CS-Cart Administration Control Panel
