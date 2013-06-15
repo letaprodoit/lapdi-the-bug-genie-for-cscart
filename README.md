@@ -5,7 +5,7 @@ issue tracking software. Excellent for CS-Cart installations that sell software 
 integrate issue tracking into their market place.
 
 For up-to-date installation and setup notes, visit the FAQ:
-[http://lab.thesoftwarepeople.com/tracker/wiki/cscart-tbg-MainPage](http://lab.thesoftwarepeople.com/tracker/wiki/cscart-tbg-MainPage)
+[http://lab.thesoftwarepeople.com/tracker/wiki/The+Bug+Genie+for+CS-Cart](http://lab.thesoftwarepeople.com/tracker/wiki/The+Bug+Genie+for+CS-Cart)
 
 
 *GENERAL INSTALLATION NOTES*
