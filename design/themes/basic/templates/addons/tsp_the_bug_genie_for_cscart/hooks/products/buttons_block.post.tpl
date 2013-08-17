@@ -1,0 +1,1 @@
+{include file="addons/tsp_the_bug_genie_for_cscart/views/tsp_the_bug_genie_for_cscart/components/update_fields.tpl" array_name="product_data" has_data=$tsptbg_has_data title="" class_name="thebuggenie_box" record=$product_data fields=$tsptbg_product_addon_fields}

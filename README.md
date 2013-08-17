@@ -1,4 +1,4 @@
-The Bug Genie for CS-Cart (CS-Cart Addon) 1.0
+The Bug Genie for CS-Cart
 -------
 The Bug Genie for CS-Cart is an addon integration with The Bug Genie project management and 
 issue tracking software. Excellent for CS-Cart installations that sell software and wish to 
@@ -11,16 +11,13 @@ For up-to-date installation and setup notes, visit the FAQ:
 *GENERAL INSTALLATION NOTES*
 
 - Download from repository
-- Unzip the zip file
-- Open addons/ folder and copy the tsp_the_bug_genie_for_cscart to [your cscart install dir]/addons/
-* Open the basic/admin/addons/ folder and copy the tsp_the_bug_genie_for_cscart/ folder to [your cscart install dir]/var/skins_repository/basic/admin/addons/ folder
-* Open the basic/customer/addons/ folder and copy the tsp_the_bug_genie_for_cscart/ folder to [your cscart install dir]/var/skins_repository/basic/customer/addons/ folder
-- BUG FIX: Open the core/ folder and copy fn.database.php [your cscart install dir]/core/ 
--- [http://forum.cs-cart.com/tracker/issue-3766-bug-when-caching-tables-with-the-same-name-in-multiple-databases/](BUG FIX for Version 3.0.5 CS-CART Issue #3766)
+- Unzip the zip file in the directory where CS-Cart runs
+- If the zip creates a new directory called `tsp-the-bug-genie-for-cscart` you will need to run the install script, else you are done
+- If `tsp-the-bug-genie-for-cscart` folder created by zip, Navigate to the folder. Update the $target_loc in the install.php and run its. Command: php install.php
 - Open CS-Cart Administration Control Panel
-- Navigate to Settings-> Addons
-- Find the "The Software People: The Bug Genie for CS-Cart" addon and click "Install"
-- After Install, from the Addons listing click on Settings for "The Software People: The Bug Genie for CS-Cart"
+- Navigate to Addons -> Manage Addons
+- Find the "The Software People: The Bug Genie for CS-Cart" addon and click "Install" (If you don't see it make sure "All Stores" is selected at the top of the screen)
+- After Install, from the Addons listing click on Settings for "The Software People: Appointments"
 - Update the database settings for The Bug Genie database
 - Update The Bug Genie settings
 

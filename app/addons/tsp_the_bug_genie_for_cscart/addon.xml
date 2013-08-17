@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+	<id>tsp_the_bug_genie_for_cscart</id>
+	<name>The Software People: The Bug Genie for CS-Cart</name>
+	<description>The Software People (TSP) The Bug Genie for CS-Cart is an addon integration with The Bug Genie project management and issue tracking software.</description>
+	<version>2.0.0</version>
+	<priority>1111000101</priority>
+	<position>0</position>
+	<status>active</status>
+	<default_language>en</default_language>
+	<language_variables>
+		<item lang="en" id="tsp_the_bug_genie_for_cscart">The Software People: The Bug Genie for CS-Cart</item>
+		<item lang="en" id="tsptbg_issues_url">Issues URL</item>
+		<item lang="en" id="tsptbg_project_url">Project URL</item>
+		<item lang="en" id="tsptbg_report_url">Report Bug URL</item>
+		<item lang="en" id="tsptbg_wiki_url">Wiki URL</item>
+		<item lang="en" id="tsptbg_submit_project">Create Issue in Project</item>
+		<item lang="en" id="tsptbg_submit_issue_name">Issue Name</item>
+		<item lang="en" id="tsptbg_submit_issue_id">Issue ID#</item>
+		<item lang="en" id="tsptbg_submit_issue_text">Issue Description Template</item>
+		<item lang="en" id="tsptbg_submit_issue_type">Issue Type to Create</item>
+		<item lang="en" id="tsptbg_cannot_connect_to_database_server">Could not connect to The Bug Genie database server. Please check your settings.</item>
+		<item lang="en" id="tsptbg_wrong_table_prefix">Could not find tables with the prefix given in The Bug Genie database. Please check your settings.</item>
+		<item lang="en" id="tsptbg_db_connected">You have connected to The Bug Genie database successfully!</item>
+	</language_variables>
+	<tab_order>prepend</tab_order>
+	<settings>
+		<sections>
+			<section id="buggenie">
+				<!-- Tab name in the default language -->
+				<name>The Bug Genie Settings</name>		
+				<items>
+					<item id="delete_bug_genie_data">
+						<name>Delete Bug Genie Data on Uninstall</name>
+						<type>selectbox</type>
+						<default_value>N</default_value>
+						<variants>
+							<item id="N">
+								<name>No</name>
+							</item>
+							<item id="Y">
+								<name>Yes</name>
+							</item>
+						</variants>
+					</item>
+				</items>
+			</section>
+		</sections>
+	</settings>
+	<queries>
+		<!-- If parameter "for" equals "install" or is not set, the query is executed during the add-on installation -->
+		<!-- If the "editions" attribute is given, the request will be executed only for the editions that are defined in it (separated with commas) -->
+		<item for="install">
+			CREATE TABLE `?:addon_tsp_the_bug_genie_for_cscart_product_metadata` (
+				`product_id` mediumint(8) NOT NULL,
+				`field_name` varchar(255) NOT NULL,
+				`value` text NOT NULL,
+				PRIMARY KEY (`product_id`,`field_name`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+		</item>
+	</queries>
+	<functions>
+		<item for="uninstall">fn_tsptbg_uninstall_product_metadata</item>
+		<item for="uninstall">fn_tsptbg_uninstall_languages</item>
+	</functions>
+</addon>
