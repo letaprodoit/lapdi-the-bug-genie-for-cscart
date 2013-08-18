@@ -1,5 +1,5 @@
 {if $fields}
-<div id="tsp_the_bug_genie_fields" class="in collapse">
+<div id="{$target_name}" class="in collapse">
     <fieldset>        
         {foreach from=$fields item="field"}
         <div class="control-group">
