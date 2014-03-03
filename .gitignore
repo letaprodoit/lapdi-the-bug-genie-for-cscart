@@ -1,4 +1,5 @@
 *~
+Thumbs.db
 .DS_Store
 .svn
 *.xml.full
@@ -8,3 +9,7 @@ _notes
 _install_files
 _archive
 _design
+*.bak
+*.vpp~*
+var
+_*
